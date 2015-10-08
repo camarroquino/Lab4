@@ -44,7 +44,7 @@ public class RegistroVenta
     /**
      * Fecha en la que se vendió el producto
      */
-    private Date fechaVenta;
+    //private Date fechaVenta;
 
     /**
      * Producto vendido
@@ -91,7 +91,7 @@ public class RegistroVenta
     public RegistroVenta(Date fechaVenta, Mueble producto, int cantidad,
             String ciudad, Usuario comprador)
     {
-        this.fechaVenta = fechaVenta;
+        //this.fechaVenta = fechaVenta;
         this.producto = producto;
         this.cantidad = cantidad;
         this.ciudad = ciudad;
@@ -124,19 +124,19 @@ public class RegistroVenta
      * Devuelve la fecha en que se vendió el mueble
      * @return fechaVenta Fecha de venta del mueble
      */
-    public Date getFechaVenta()
-    {
-        return fechaVenta;
-    }
+//    public Date getFechaVenta()
+//    {
+//        return fechaVenta;
+//    }
 
     /**
      * Modifica la fecha en que se vendió el mueble
      * @param fechaVenta Nueva fecha de venta
      */
-    public void setFechaVenta(Date fechaVenta)
-    {
-        this.fechaVenta = fechaVenta;
-    }
+//    public void setFechaVenta(Date fechaVenta)
+//    {
+//        this.fechaVenta = fechaVenta;
+//    }
 
     /**
      * Devuelve el mueble adquirido

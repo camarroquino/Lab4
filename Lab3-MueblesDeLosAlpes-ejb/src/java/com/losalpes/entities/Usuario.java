@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Clase que representa un usuario del sistema
  * 
  */
-@XmlRootElement
-    @NamedQueries({
-        @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u ,sum(Select sum(r.cantidad * m.precio) from RegistroVenta r  inner join r.producto m where r.comprador = u ) FROM Usuario u WHERE u.comprador.id = :id")
-    })
+//@XmlRootElement
+//    @NamedQueries({
+//        @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u ,sum(Select sum(r.cantidad * m.precio) from RegistroVenta r  inner join r.producto m where r.comprador = u ) FROM Usuario u WHERE u.comprador.id = :id")
+//    })
 
 @Entity
 public class Usuario
@@ -52,7 +52,6 @@ public class Usuario
     /**
      * Tipo de usuario
      */
-    @ManyToOne
     private TipoUsuario tipoUsuario;
 
     /**
@@ -68,7 +67,6 @@ public class Usuario
     /**
      * Tipo de documento
      */
-    @ManyToOne
     private TipoDocumento tipoDocumento;
 
     /**
@@ -112,7 +110,7 @@ public class Usuario
     /**
      * Devuelve un lista con todos las compras del usuario
      */
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "comprador")
     private ArrayList<RegistroVenta>compras;
     @Id
     private Long id;

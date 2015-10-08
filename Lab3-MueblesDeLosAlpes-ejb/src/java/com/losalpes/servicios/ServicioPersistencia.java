@@ -15,13 +15,17 @@ import com.losalpes.excepciones.OperacionInvalidaException;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Implementación de los servicios de persistencia
  */
 @Stateless
-public class ServicioPersistencia implements IServicioPersistenciaMockLocal,IServicioPersistenciaMockRemote, Serializable {
+public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Serializable {
 
+    @PersistenceContext
+    private EntityManager entityManager;
     //-----------------------------------------------------------
     // Atributos
     //-----------------------------------------------------------
@@ -87,8 +91,8 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal,ISer
     @Override
     public List findAll(Class c)
     {
-        return null;
-        //return entityManager.createQuery("select O from " + c.getSimpleName() + " as O").getResultList();
+        //return null;
+        return entityManager.createQuery("select O from " + c.getSimpleName() + " as O").getResultList();
     }
 
     /**

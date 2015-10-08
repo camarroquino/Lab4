@@ -12,6 +12,7 @@
 
 package com.losalpes.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -20,7 +21,7 @@ import javax.persistence.Id;
  * 
  */
 @Entity
-public class Ciudad
+public class Ciudad implements Serializable
 {
       
     //-----------------------------------------------------------
