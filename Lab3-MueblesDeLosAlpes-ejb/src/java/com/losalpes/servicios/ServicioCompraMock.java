@@ -9,6 +9,8 @@ import com.losalpes.entities.RegistroVenta;
 import com.losalpes.entities.Usuario;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -17,9 +19,13 @@ import javax.ejb.Stateless;
 @Stateless
 public class ServicioCompraMock implements ServicioCompraMockLocal {
 
+    @PersistenceContext
+    private EntityManager entityManager;
+    
+    
     @Override
-    public List<RegistroVenta> getComprasByUsuario(Usuario u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<RegistroVenta> getComprasByUsuario(Usuario id) {
+        return entityManager.createNamedQuery("RegistroVenta.findByIdUsuario", RegistroVenta.class).getResultList();
     }
 
     // Add business logic below. (Right-click in editor and choose

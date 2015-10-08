@@ -283,7 +283,13 @@
                             Privilegio
                         </f:facet>
                         <h:outputText value="#{file.tipoUsuario}"/>
-                    </p:column>                   
+                    </p:column>  
+                    <p:column>
+                        <f:facet name="header">
+                            Acción
+                        </f:facet>
+                        <p:commandButton value="Compras" actionListener="#{registroBean.obtenerComprasUsuario}"/>
+                    </p:column> 
                     <p:column style="width: 30px">
                         <f:facet name="header">
                             <h:outputText
@@ -326,6 +332,40 @@
                                                  value="Cerrar" style="z-index:2;"/>
                             </div>
                         </h:panelGroup>
+                    </h:panelGroup>
+            </p:dialog>
+            
+            
+            
+            
+            <p:dialog id="popupCompra" rendered="true" visible="#{registroBean.mostrarCompra}" modal="true" height="100">
+
+                <f:facet name="header">
+                        <h:outputText value="Compras de Usuario"/>
+                </f:facet>
+                    <h:panelGroup>
+                        <p:dataTable id="compraData" value="#{registroBean.compras}" var="compra"
+                    paginator="true" rows="5" scrollable="true" scrollHeight="200" scrollWidth="50%" frozenColumns="2"
+                    >
+                    <p:column>
+                        <f:facet name="header">
+                            Fecha de compra
+                        </f:facet>
+                        <h:outputText />
+                    </p:column>
+                    <p:column style="width:40px">
+                        <f:facet name="header">
+                            Mueble
+                        </f:facet>
+                        <h:outputText value="#{compra.producto.nombre}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Cantidad
+                        </f:facet>
+                        <h:outputText value="#{compra.cantidad}"/>
+                    </p:column>                    
+                </p:dataTable>
                     </h:panelGroup>
             </p:dialog>
 

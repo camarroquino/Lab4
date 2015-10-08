@@ -15,11 +15,13 @@ package com.losalpes.beans;
 import com.losalpes.entities.Ciudad;
 import com.losalpes.entities.Pais;
 import com.losalpes.entities.Profesion;
+import com.losalpes.entities.RegistroVenta;
 import com.losalpes.entities.TipoDocumento;
 import com.losalpes.entities.TipoUsuario;
 import com.losalpes.entities.Usuario;
 import com.losalpes.excepciones.OperacionInvalidaException;
 import com.losalpes.servicios.IServicioRegistroMockLocal;
+import com.losalpes.servicios.ServicioCompraMockLocal;
 import com.losalpes.servicios.ServicioRegistroMock;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -82,6 +84,12 @@ public class RegistroBean implements Serializable
      * Muestra la ventana de estado
      */
     private boolean mostrarVentana;
+    
+    private boolean mostrarCompra;
+            
+    private List<RegistroVenta> compras;  
+    
+    private ServicioCompraMockLocal compraMockLocal;
 
     //-----------------------------------------------------------
     // Constructor
@@ -134,6 +142,26 @@ public class RegistroBean implements Serializable
     // Getter y setters
     //-----------------------------------------------------------
 
+    public List<RegistroVenta> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<RegistroVenta> compras) {
+        this.compras = compras;
+    }
+
+    
+    
+    
+    public boolean isMostrarCompra() {
+        return mostrarCompra;
+    }
+
+    public void setMostrarCompra(boolean mostrarCompra) {
+        this.mostrarCompra = mostrarCompra;
+    }
+
+    
     /**
      * Devuelve el usuario actual.
      * @return usuario Usuario actual
@@ -409,6 +437,11 @@ public class RegistroBean implements Serializable
     public void limpiar()
     {
         usuario=new Usuario();
+    }
+    
+    
+  public void obtenerComprasUsuario(){    
+        compras= compraMockLocal.getComprasByUsuario(usuario);
     }
 
 }

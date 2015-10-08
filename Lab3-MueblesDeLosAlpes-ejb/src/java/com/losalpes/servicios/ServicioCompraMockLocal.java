@@ -16,5 +16,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface ServicioCompraMockLocal {
-    public List<RegistroVenta> getComprasByUsuario(Usuario u);
+        public List<RegistroVenta> getComprasByUsuario(Usuario u);
 }

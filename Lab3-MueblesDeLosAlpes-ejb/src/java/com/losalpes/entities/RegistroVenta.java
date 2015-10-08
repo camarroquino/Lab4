@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
     @NamedQueries({
         
-        @NamedQuery(name = "RegistroVenta.findByIdUsuario", query = "SELECT r FROM RegistroVenta r WHERE r.comprador.id = :id"),
+            @NamedQuery(name = "RegistroVenta.findByIdUsuario", query = "SELECT r FROM RegistroVenta"),
         @NamedQuery(name = "RegistroVenta.findByVentaMueble", query = "SELECT r.producto,SUM(r.cantidad) as cantidadVenta FROM RegistroVenta r GROUP BY r.producto.referencia")
         
         })
