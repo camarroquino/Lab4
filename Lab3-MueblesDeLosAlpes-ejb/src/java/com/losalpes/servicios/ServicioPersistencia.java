@@ -104,7 +104,6 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
     @Override
     public Object findById(Class c, Object id)
     {
-        //return entityManager.createNamedQuery("select c from " + c.getSimpleName() + " as O").getResultList();
         return entityManager.find(c, id);
     }
     
@@ -117,6 +116,6 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
     @Override
     public Usuario findUsuarioByUsuario(String login,String contrasena)
     {
-        return entityManager.find(c, id);
+        return entityManager.createNamedQuery("Usuario.FindByLogin", Usuario.class).setParameter("login", login).setParameter("contraseña", contrasena).getSingleResult();
     }
 }
