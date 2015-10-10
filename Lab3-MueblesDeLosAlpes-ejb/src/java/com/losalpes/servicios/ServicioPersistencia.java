@@ -79,7 +79,7 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
      */
     @Override
     public void delete(Object obj) throws OperacionInvalidaException
-    {a
+    {
         entityManager.remove(obj);
     }
 
@@ -104,7 +104,6 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
     @Override
     public Object findById(Class c, Object id)
     {
-<<<<<<< HEAD
         //return entityManager.createNamedQuery("select c from " + c.getSimpleName() + " as O").getResultList();
         return entityManager.find(c, id);
     }
