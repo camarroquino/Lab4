@@ -13,25 +13,25 @@
 package com.losalpes.entities;
 
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Clase que modela un registro de venta realizado por un cliente
  * 
  */
 
-@XmlRootElement
-    @NamedQueries({
-        
-            @NamedQuery(name = "RegistroVenta.findByIdUsuario", query = "SELECT r FROM RegistroVenta"),
-        @NamedQuery(name = "RegistroVenta.findByVentaMueble", query = "SELECT r.producto,SUM(r.cantidad) as cantidadVenta FROM RegistroVenta r GROUP BY r.producto.referencia")
-        
-        })
+//@XmlRootElement
+//    @NamedQueries({
+//        
+//            @NamedQuery(name = "RegistroVenta.findByIdUsuario", query = "SELECT r FROM RegistroVenta"),
+//        @NamedQuery(name = "RegistroVenta.findByVentaMueble", query = "SELECT r.producto,SUM(r.cantidad) as cantidadVenta FROM RegistroVenta r GROUP BY r.producto.referencia")
+//        
+//        })
 
 @Entity
 public class RegistroVenta
@@ -44,7 +44,9 @@ public class RegistroVenta
     /**
      * Fecha en la que se vendió el producto
      */
-    //private Date fechaVenta;
+    @Column(name = "FECHA_VENTA")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaVenta;
 
     /**
      * Producto vendido
@@ -124,19 +126,19 @@ public class RegistroVenta
      * Devuelve la fecha en que se vendió el mueble
      * @return fechaVenta Fecha de venta del mueble
      */
-//    public Date getFechaVenta()
-//    {
-//        return fechaVenta;
-//    }
+    public Date getFechaVenta()
+    {
+        return fechaVenta;
+    }
 
     /**
      * Modifica la fecha en que se vendió el mueble
      * @param fechaVenta Nueva fecha de venta
      */
-//    public void setFechaVenta(Date fechaVenta)
-//    {
-//        this.fechaVenta = fechaVenta;
-//    }
+    public void setFechaVenta(Date fechaVenta)
+    {
+        this.fechaVenta = fechaVenta;
+    }
 
     /**
      * Devuelve el mueble adquirido

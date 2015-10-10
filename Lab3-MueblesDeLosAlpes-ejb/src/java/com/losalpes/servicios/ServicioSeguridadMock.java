@@ -57,13 +57,13 @@ public class ServicioSeguridadMock implements IServicioSeguridadMockLocal
      * @return usuario Retorna el objeto que contiene la información del usuario que ingreso al sistema.
      */
     @Override
-    public Usuario ingresar(String nombre, String contraseña) throws AutenticacionException
+    public Usuario ingresar(String nombre, String contrasena) throws AutenticacionException
     {
-        Usuario u = (Usuario) persistencia.findById(Usuario.class, nombre);
+        Usuario u = (Usuario) persistencia.findUsuarioByUsuario(nombre, contrasena);
 
         if (u != null)
         {
-            if (u.getLogin().equals(nombre) && u.getContraseña().equals(contraseña))
+            if (u.getLogin().equals(nombre) && u.getContraseña().equals(contrasena))
             {
                 return u;
             } 

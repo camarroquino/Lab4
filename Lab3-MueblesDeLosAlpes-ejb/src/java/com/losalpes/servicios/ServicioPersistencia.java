@@ -11,6 +11,7 @@
 
 package com.losalpes.servicios;
 
+import com.losalpes.entities.Usuario;
 import com.losalpes.excepciones.OperacionInvalidaException;
 import java.io.Serializable;
 import java.util.List;
@@ -104,7 +105,19 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
     @Override
     public Object findById(Class c, Object id)
     {
-        //TODO
-        return null;
+        //return entityManager.createNamedQuery("select c from " + c.getSimpleName() + " as O").getResultList();
+        return entityManager.find(c, id);
+    }
+    
+    /**
+     * Retorna un usuario dado su Usuario y contraseña
+     * @param c Clase de la instancia que se quiere buscar.
+     * @param id Identificador unico del objeto.
+     * @return obj Resultado de la consulta.
+     */
+    @Override
+    public Usuario findUsuarioByUsuario(String login,String contrasena)
+    {
+        return entityManager.createNamedQuery("Usuario.FindByLogin", Usuario.class).setParameter("login", login).setParameter("contraseña", contrasena).getSingleResult();
     }
 }

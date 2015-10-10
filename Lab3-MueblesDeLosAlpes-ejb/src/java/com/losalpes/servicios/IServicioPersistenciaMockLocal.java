@@ -12,6 +12,7 @@
 
 package com.losalpes.servicios;
 
+import com.losalpes.entities.Usuario;
 import com.losalpes.excepciones.OperacionInvalidaException;
 import javax.ejb.Local;
 
@@ -55,5 +56,14 @@ public interface IServicioPersistenciaMockLocal
      * @return obj Resultado de la consulta.
      */
     public java.lang.Object findById(java.lang.Class c, java.lang.Object id);
+    
+    /**
+     * Consulta usuario a partir de usuario y contraseña
+     * @param login
+     * @param contrasena
+     * @return 
+     */
+    
+    public Usuario findUsuarioByUsuario(String login,String contrasena);
     
 }

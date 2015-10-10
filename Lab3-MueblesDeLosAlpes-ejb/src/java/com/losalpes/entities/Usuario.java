@@ -13,7 +13,11 @@
 package com.losalpes.entities;
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -26,10 +30,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Clase que representa un usuario del sistema
  * 
  */
-//@XmlRootElement
-//    @NamedQueries({
-//        @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u ,sum(Select sum(r.cantidad * m.precio) from RegistroVenta r  inner join r.producto m where r.comprador = u ) FROM Usuario u WHERE u.comprador.id = :id")
-//    })
+@XmlRootElement
+    @NamedQueries({
+        @NamedQuery(name="Usuario.FindByLogin", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.contraseña = :contraseña")
+    })
 
 @Entity
 public class Usuario
@@ -42,11 +46,13 @@ public class Usuario
     /**
      * Nombre del usuario
      */
+    @Column(name = "LOGIN")
     private String login;
 
     /**
      * Contraseña del usuario
      */
+     @Column(name = "CONTRASEÑA")
     private String contraseña;
 
     /**
@@ -93,7 +99,7 @@ public class Usuario
     /**
      * Profesión del usuario
      */
-    
+    @Enumerated(EnumType.STRING)
     private Profesion profesion;
 
     /**
@@ -111,7 +117,7 @@ public class Usuario
      * Devuelve un lista con todos las compras del usuario
      */
     @OneToMany(mappedBy = "comprador")
-    private ArrayList<RegistroVenta>compras;
+    private List<RegistroVenta>compras;
     @Id
     private Long id;
 
@@ -133,10 +139,10 @@ public class Usuario
      * @param contraseña Constraseña del usuario
      * @param tipo Tipo de usuario
      */
-    public Usuario(String login, String contraseña, TipoUsuario tipoUsuario)
+    public Usuario(String login, String contrasena, TipoUsuario tipoUsuario)
     {
         this.login = login;
-        this.contraseña = contraseña;
+        this.contraseña = contrasena;
         this.tipoUsuario = tipoUsuario;
         this.compras=new ArrayList<RegistroVenta>();
     }
@@ -176,9 +182,9 @@ public class Usuario
      * Modifica la contraseña del usuario
      * @param contraseña Nueva contraseña
      */
-    public void setContraseña(String contraseña)
+    public void setContraseña(String contrasena)
     {
-        this.contraseña = contraseña;
+        this.contraseña = contrasena;
     }
 
     /**
@@ -365,7 +371,7 @@ public class Usuario
      * Devuelve las compras realizadas por un cliente
      * @return compras Lista con las compras realizadas por el cliente
      */
-    public ArrayList<RegistroVenta> getCompras()
+    public List<RegistroVenta> getCompras()
     {
         return compras;
     }
@@ -374,7 +380,7 @@ public class Usuario
      * Modifica las compras realizadas por un cliente
      * @param compras Nueva lista de compras
      */
-    public void setCompras(ArrayList<RegistroVenta> compras)
+    public void setCompras(List<RegistroVenta> compras)
     {
         this.compras = compras;
     }

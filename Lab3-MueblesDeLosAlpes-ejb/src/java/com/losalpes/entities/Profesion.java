@@ -18,5 +18,5 @@ package com.losalpes.entities;
  */
 public enum Profesion
 {
-    Abogado,Arquitecto,Administrador,Diseñador,Economista,Estudiante,Médico,Ingeniero
+        Abogado,Arquitecto,Administrador,Diseñador,Economista,Estudiante,Médico,Ingeniero
 }
