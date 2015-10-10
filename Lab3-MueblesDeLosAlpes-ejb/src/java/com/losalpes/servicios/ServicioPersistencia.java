@@ -59,7 +59,7 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
     @Override
     public void create(Object obj) throws OperacionInvalidaException
     {
-       //TODO
+        entityManager.persist(obj);
     }
 
     /**
@@ -69,7 +69,7 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
     @Override
     public void update(Object obj)
     {
-       //TODO
+        entityManager.merge(obj);
     }
 
     /**
@@ -79,8 +79,7 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
     @Override
     public void delete(Object obj) throws OperacionInvalidaException
     {
-       //TODO
-
+        entityManager.remove(obj);
     }
 
     /**
@@ -91,7 +90,6 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
     @Override
     public List findAll(Class c)
     {
-        //return null;
         return entityManager.createQuery("select O from " + c.getSimpleName() + " as O").getResultList();
     }
 
@@ -104,7 +102,6 @@ public class ServicioPersistencia implements IServicioPersistenciaMockLocal, Ser
     @Override
     public Object findById(Class c, Object id)
     {
-        //TODO
-        return null;
+        return entityManager.find(c, id);
     }
 }
